@@ -1,0 +1,34 @@
+# Package Overview
+
+package_name: duplicate_detection_model
+
+# Data Files
+test_data_file: test_data.csv
+test_label_data_file: test_label_data.csv
+explore_data_file: expore_data.csv
+
+# Artifact Files
+# 
+# Variables
+
+# The variable we are attempting to predict (sub_sys / component)
+prediction_result_number: 5
+prediction_result_threshold: 0.9
+prediction_search_period: 100
+prediction_status_is_open: true
+
+features:
+  - short_desc
+  - sub_sys
+  - create_date
+
+optional_features:
+  - status
+
+text_features:
+  - short_desc
+  - sub_sys
+
+time_features:
+  - create_date
+  

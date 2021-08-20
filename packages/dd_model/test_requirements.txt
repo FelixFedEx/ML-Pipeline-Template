@@ -1,0 +1,13 @@
+-r requirements.txt
+
+# data version control
+dvc[s3]
+
+# testing requirements
+pytest>=5.3.2,<6.0.0
+
+# repo maintenance tooling
+black>=19.10b0,<20.0
+flake8>=3.7.9,<4.0
+mypy>=0.740
+isort>=5.8.0

@@ -1,0 +1,22 @@
+include *.txt
+include *.md
+include *.pkl
+recursive-include ./dd_model/*
+
+
+include dd_model/VERSION
+include dd_model/config.yml
+include dd_model/datasets/*.csv
+#include dd_model/artifacts/*.pkl
+#include dd_model/artifacts/*.json
+#include dd_model/artifacts/*.h5
+#include dd_model/artifacts/*.csv
+
+
+
+include ./requirements.txt
+exclude *.log
+exclude *.cfg
+
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
