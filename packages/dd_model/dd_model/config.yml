@@ -1,6 +1,6 @@
 # Package Overview
 
-package_name: duplicate_detection_model
+package_name: dd_model
 
 # Data Files
 test_data_file: test_data.csv

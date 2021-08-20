@@ -131,3 +131,6 @@ dmypy.json
 
 # test datasets
 dd_model/datasets/test_data.csv
+
+# OS-related
+.DS_Store

@@ -4,7 +4,7 @@ import logging
 
 from sklearn.pipeline import Pipeline
 
-from duplicate_detection_model.processing import preprocessors as dp
+from dd_model.processing import preprocessors as dp
 
 _logger = logging.getLogger(__name__)
 
