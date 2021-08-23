@@ -15,19 +15,19 @@ obs_pipe = Pipeline(
         (
             "extract_fail_symptom_from_short",
             dp.SklearnTransformerWrapper(
-                variables=["short_desc"], transformer=dp.ExtractFailSymptomFromShort()
+                variables=["short"], transformer=dp.ExtractFailSymptomFromShort()
             ),
         ),
         (
             "word_tokenizer",
             dp.SklearnTransformerWrapper(
-                variables=["short_desc"], transformer=dp.WordTokenizer()
+                variables=["short"], transformer=dp.WordTokenizer()
             ),
         ),
         (
             "word_lemmatizer",
             dp.SklearnTransformerWrapper(
-                variables=["short_desc"], transformer=dp.WordLemmatizer()
+                variables=["short"], transformer=dp.WordLemmatizer()
             ),
         ),
         (

@@ -47,23 +47,6 @@ class SklearnTransformerWrapper(BaseEstimator, TransformerMixin):
         return X
 
 
-class ExtractFailSymptomFromShort(TransformerMixin, BaseEstimator):
-    """
-    :X: str
-    """
-
-    def fit(self, X, y=None):
-        return self
-
-    def transform(self, X, y=None):
-        X = X.copy()
-        data_cleaner = DataCleaner()
-        for col in X.columns:
-            X[col] = data_cleaner.extract_fail_symptom_from_short(X, col)
-
-        return X
-
-
 class WordTokenizer(TransformerMixin, BaseEstimator):
     """
     :X: str
@@ -80,25 +63,6 @@ class WordTokenizer(TransformerMixin, BaseEstimator):
 
         return X
 
-
-class WordHexcodeParser(TransformerMixin, BaseEstimator):
-    """ """
-
-    def __init__(self, variables=None):
-        if not isinstance(variables, list):
-            self.variables = [variables]
-        else:
-            self.variables = variables
-
-    def fit(self, X, y=None):
-        return self
-
-    def transform(self, X, y=None):
-        X = X.copy()
-        for var in self.variables:
-            X[var] = X[var].apply(lambda x: re.split(" |_", parse(" ".join(x))))
-
-        return X
 
 
 class WordLemmatizer(TransformerMixin, BaseEstimator):
@@ -134,46 +98,4 @@ class WordJoiner(BaseEstimator, TransformerMixin):
             X[var] = X[var].apply(lambda x: " ".join(x))
 
         return X
-
-
-class SimpleScoreCalculator(BaseEstimator, TransformerMixin):
-    def __init__(self):
-        self.df_exp = None
-        self.is_open = False
-        self.search_period = 30
-
-    def fit(self, X, y=None, **kwargs):
-        return self
-
-    def transform(self, X, y=None):
-        X = X.copy()
-        X["score"] = X.apply(
-            lambda x: data_pipeline.find_dup_obs(
-                df_obs=x,
-                df=self.df_exp,
-                search_period=self.search_period,
-                is_open=self.is_open,
-            ),
-            axis=1,
-        )
-
-        return X
-
-
-class ScorePredictor(BaseEstimator, TransformerMixin):
-    def __init__(self):
-        self.threshold = 0.5
-        self.n_dup = 10
-
-    def fit(self, X, y=None):
-        return self
-
-    def transform(self, X, y=None):
-        X = X.copy()
-        X["score"] = X["score"].apply(
-            lambda x: data_pipeline.select_dup_obs(
-                x, threshold=self.threshold, n_dup=self.n_dup
-            )
-        )
-
-        return X
+        

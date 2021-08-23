@@ -18,7 +18,7 @@ prediction_search_period: 100
 prediction_status_is_open: true
 
 features:
-  - short_desc
+  - short
   - sub_sys
   - create_date
 
@@ -26,7 +26,7 @@ optional_features:
   - status
 
 text_features:
-  - short_desc
+  - short
   - sub_sys
 
 time_features:

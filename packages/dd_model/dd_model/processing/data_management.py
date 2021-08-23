@@ -21,8 +21,8 @@ def load_explore_dataset(*, file_name: str, nrows: int = None) -> pd.DataFrame:
     else:
         df = pd.read_csv(f"{DATASET_DIR}/{file_name}", nrows=nrows)
 
-    df["obs_id"] = df["obs_id"].astype("str")
-    df["short_desc"] = df["short_desc"].apply(ast.literal_eval)
+    df["id"] = df["id"].astype("str")
+    df["short"] = df["short"].apply(ast.literal_eval)
     df.loc[:, "create_date"] = pd.to_datetime(
         df["create_date"], format="%Y-%m-%d %H:%M:%S"
     )
@@ -36,8 +36,8 @@ def load_test_dataset(*, file_name: str, nrows: int = None) -> pd.DataFrame:
     else:
         df = pd.read_csv(f"{DATASET_DIR}/{file_name}", nrows=nrows)
 
-    df["obs_id"] = df["obs_id"].astype("str")
-    df["dup_id_new"] = df["dup_id_new"].astype("str")
+    df["obs"] = df["obs"].astype("str")
+    df["id_new"] = df["id_new"].astype("str")
     # df['create_date'] = pd.to_datetime(df['create_date'], format='%Y-%m-%d %H:%M:%S')
 
     return df
